@@ -37,7 +37,7 @@ class VectorStore:
 
     def get_retriever(self):
         return self.vectorstore.as_retriever(
-            search_kwargs={"k": 2}
+            search_kwargs={"k": 3}
         )
 
     def count(self):
