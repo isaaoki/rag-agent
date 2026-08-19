@@ -100,12 +100,17 @@ The interface will be available at `http://localhost:7860`.
 ## Deploy in OCI
 
 - **Public link:** [link of the application](http://137.131.221.188:7860/)
-- **Screenshot of the application:** 
+- **Infrastructure:** Oracle Cloud Free Tier — VM.Standard.E2.1.Micro (1 OCPU, 1GB RAM), Ubuntu 22.04
 
 ![Example of the site running with OCI](./imgs/deploy.png)
+*Application running and responding to a query*
 
 ![Screenshot of Oracle Cloud instance running](./imgs/deploy-oci.png)
+*OCI Console showing the running instance*
 
+### Notes
+- Embeddings run via API (not locally) to keep memory usage low enough for the free tier's 1GB instance
+- A swap file was configured to add headroom during builds and peak usage
 
 ## Next steps
 
