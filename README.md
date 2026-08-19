@@ -91,13 +91,24 @@ The interface will be available at `http://localhost:7860`.
 
 ## Example of generated answers
 
-![Exemplo de resposta da 1a pergunta](./imgs/answer1.png)
+![Example of answer of question 1](./imgs/answer1.png)
 
-![Exemplo de resposta da 2a pergunta](./imgs/answer2.png)
+![Example of answer of question 2](./imgs/answer2.png)
 
-![Exemplo de resposta da 3a pergunta](./imgs/answer3.png)
+![Example of answer of question 1](./imgs/answer3.png)
 
 ## Deploy in OCI
 
-- **Public link:** [insert link here]
-- **Screenshot of the application:** [insert image here]
+- **Public link:** [link of the application](http://137.131.221.188:7860/)
+- **Screenshot of the application:** 
+
+![Example of the site running with OCI](./imgs/deploy.png)
+
+![Screenshot of Oracle Cloud instance running](./imgs/deploy-oci.png)
+
+
+## Next steps
+
+- Improve deployment by configuring Cloudflare (proxy + DNS) to hide the server's real IP and get free HTTPS
+- Improve front-end (Gradio UI/UX, custom theme, better error handling in the interface)
+- Add logging/observability for the LangGraph agent (e.g. LangSmith tracing) to debug retrieval and reasoning steps
