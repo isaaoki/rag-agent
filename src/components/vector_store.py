@@ -1,6 +1,6 @@
 from components.loaders import Loader
 from langchain_chroma import Chroma
-from langchain_huggingface import HuggingFaceEndpoint, HuggingFaceEmbeddings
+from langchain_huggingface import HuggingFaceEndpointEmbeddings
 import os
 
 class VectorStore:
@@ -11,12 +11,11 @@ class VectorStore:
     def __init__(self):
         if not os.getenv("HF_TOKEN"):
             raise ValueError("Missing value of HF_TOKEN")
-        
-        self.model = HuggingFaceEndpoint(
-            repo_id=self.EMBEDDING_MODEL,
+
+        self.embeddings = HuggingFaceEndpointEmbeddings(
+            model=self.EMBEDDING_MODEL,
             huggingfacehub_api_token=os.getenv("HF_TOKEN")
         )
-        self.embeddings = HuggingFaceEmbeddings(model_name=self.EMBEDDING_MODEL) 
 
     def create(self):
         self.loader = Loader()
