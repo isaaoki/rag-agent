@@ -1,4 +1,4 @@
-from search_company_documents import ChunkResultado
+from tools.search_company_documents import ChunkResultado
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from typing import List
@@ -14,7 +14,7 @@ Contexto:
 """)
 
 def sintetizar_resposta(query: str, chunks: List[ChunkResultado], llm) -> str:
-    contexto = "\n\n".join(chunk.texto for chunk in chunks)
+    contexto = "\n\n".join(chunk.conteudo for chunk in chunks)
     cadeia = prompt | llm | StrOutputParser()
     resposta = cadeia.invoke({"pergunta": query, "contexto": contexto})
     return resposta

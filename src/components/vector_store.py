@@ -25,14 +25,16 @@ class VectorStore:
             documents=self.loader.chunks,
             embedding=self.embeddings,
             collection_name=self.COLLECTION_NAME,
-            persist_directory=self.PERSIST_DIR
+            persist_directory=self.PERSIST_DIR,
+            collection_metadata={"hnsw:space": "cosine"}
         )
 
     def load(self):
         self.vectorstore = Chroma(
             collection_name=self.COLLECTION_NAME,
             embedding_function=self.embeddings,
-            persist_directory=self.PERSIST_DIR
+            persist_directory=self.PERSIST_DIR,
+            collection_metadata={"hnsw:space": "cosine"}
         )
 
     def get_retriever(self):
@@ -41,4 +43,9 @@ class VectorStore:
         )
 
     def count(self):
-        return self.vectorstore.get()['documents']
+        return len(self.vectorstore.get()['documents'])
+
+    def similarity_search_with_relevance_scores(self, query, k=5, filter=None):
+        return self.vectorstore.similarity_search_with_relevance_scores(
+            query, k=k, filter=filter
+        )

@@ -1,0 +1,19 @@
+services:
+  agent-rag:
+    container_name: agent-rag
+    restart: unless-stopped
+    ports:
+      - "7860:7860"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - chroma_data:/app/data/chroma
+
+volumes:
+  chroma_data:

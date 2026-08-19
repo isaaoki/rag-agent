@@ -12,7 +12,7 @@ class ChunkResultado(BaseModel):
 def create_search_company_documents(vector_store, score_threshold: float = 0.5):
     def _buscar(query: str, categorias: Optional[List[str]] = None, k: int = 5) -> List[ChunkResultado]:
         filtro = {"categoria": {"$in": categorias}} if categorias else None
-
+        print(f"DEBUG filtro aplicado: {filtro}")
         resultados = vector_store.similarity_search_with_relevance_scores(
             query, k=k, filter=filtro
         )
